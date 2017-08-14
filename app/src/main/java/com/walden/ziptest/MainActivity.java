@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.walden.ziptest.Event.EventCallBack;
+import com.walden.ziptest.zip.CallBack;
+import com.walden.ziptest.zip.Event;
+import com.walden.ziptest.zip.ZipUtils;
 
 import java.util.Random;
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Event<Integer> getEvent() {
-        return Event.create(new EventCallBack<Integer>() {
+        return Event.create(new Event.EventCallBack<Integer>() {
 
             @Override
             public void dosomething(final Event.PostData<Integer> postData) {
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         int rand = new Random().nextInt(4);
                         SystemClock.sleep(rand * 1000);
                         postData.post(rand * 2);
-                    }
+                }
                 }).start();
             }
         });

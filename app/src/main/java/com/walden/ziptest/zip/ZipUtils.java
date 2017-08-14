@@ -1,18 +1,20 @@
-package com.walden.ziptest;
+package com.walden.ziptest.zip;
 
-import android.view.SurfaceHolder;
+
+import java.util.Objects;
 
 /**
  * Created by walden on 2017/8/14.
+ * zip
  */
 
 public class ZipUtils {
 
 
-    public static <T1, T2, T3, R> void Zip(Event<? extends T1> event1,
-                                           Event<? extends T2> event2,
-                                           Event<? extends T3> event3,
-                                           final CallBack<? super T1, ? super T2, ? super T3> callBack) {
+    public static <T1, T2, T3> void Zip(Event<? extends T1> event1,
+                                        Event<? extends T2> event2,
+                                        Event<? extends T3> event3,
+                                        final CallBack<? super T1, ? super T2, ? super T3> callBack) {
 
         final boolean[] t = new boolean[]{false, false, false};
         final Object[] o = new Object[3];
@@ -54,12 +56,11 @@ public class ZipUtils {
     }
 
 
-    private static boolean isAllTrue(boolean[] b) {
-        if (b != null && b.length > 0) {
-            int len = b.length;
+    private static boolean isAllTrue(boolean[] B) {
+        if (B != null && B.length > 0) {
             boolean flag = true;
-            for (int i = 0; i < len; i++) {
-                flag = flag && b[i];
+            for (boolean b : B) {
+                flag = flag && b;
             }
             return flag;
         }

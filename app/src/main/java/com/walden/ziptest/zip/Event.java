@@ -1,16 +1,15 @@
-package com.walden.ziptest;
-
-import java.util.Objects;
+package com.walden.ziptest.zip;
 
 /**
  * Created by walden on 2017/8/14.
+ * 一个任务事件
  */
 
 public class Event<T> {
 
-    EventCallBack<T> callBack;
+    private EventCallBack<T> callBack;
 
-    static <T> Event create(EventCallBack<T> eventCallBack) {
+    public static <T> Event create(EventCallBack<T> eventCallBack) {
         return new Event<>(eventCallBack);
     }
 
@@ -22,12 +21,12 @@ public class Event<T> {
         return callBack;
     }
 
-    interface EventCallBack<T> {
+    public interface EventCallBack<T> {
         void dosomething(PostData<T> postData);
     }
 
 
-    interface PostData<T> {
+    public interface PostData<T> {
         void post(T t);
     }
 }
